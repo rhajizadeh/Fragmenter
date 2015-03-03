@@ -45,9 +45,10 @@ class Model;
 class CalculatorRunnable: public QRunnable
 {
 public:
-    CalculatorRunnable(int id,EndPoint endPoint,Model *model,QList<Group> groups,Modes mode,Calculator *calculator)
+    CalculatorRunnable(int id,EndPoint startPoint, EndPoint endPoint,Model *model,QList<Group> groups,Modes mode,Calculator *calculator)
     {
         m_endPoint = endPoint;
+        m_startPoint = startPoint;
         m_groups = groups;
         m_mode = mode;
         m_id = id;
@@ -69,7 +70,7 @@ public:
 //    QList<int> resaults()   {   return m_resaults;  }
 
 private:
-    EndPoint m_endPoint;
+    EndPoint m_endPoint, m_startPoint;
     QString m_chainName;
     Model *m_model;
     Modes m_mode;

@@ -8,13 +8,9 @@ Calculator::Calculator(QList<EndPoint> endPoints, QList<Group> groups, Model *mo
     m_groups(groups),
     m_model(model),
     m_stream(stream->device()),
-    m_mode(mode)
+    m_mode(mode),
+    workingThread(0)
 {
-
-    //    outfile = new QFile(stream, this);
-    //    outfile->remove();
-    workingThread = 0;
-
 }
 
 void Calculator::run()
@@ -48,7 +44,7 @@ void Calculator::run()
         }
         else if(m_endPoints[i].endResidue-m_model->getStartRes()>0)
         {
-            cal = new CalculatorRunnable(i,m_endPoints[i],freeModels.first(),m_groups,m_mode,this);
+            cal = new CalculatorRunnable(i, m_endPoints[0], m_endPoints[i], freeModels.first(), m_groups, m_mode, this);
             freeModels.pop_front();
 
             cal->setTotal(m_endPoints.count());
@@ -152,8 +148,8 @@ void Calculator::writeToFile(EndPoint endPoint, QList<double> counts)
 void CalculatorRunnable::run()
 {
 
-    m_model->calculateSurfaces(0,m_endPoint.endResidue
-                               -m_model->getStartRes(),m_endPoint.chainName);
+    m_model->calculateSurfaces(m_startPoint.endResidue-m_model->getStartRes(), m_startPoint.chainName,
+                               m_endPoint.endResidue-m_model->getStartRes(), m_endPoint.chainName);
     error = !countGroups(m_endPoint);
 
     Calculator::showProgress(total);

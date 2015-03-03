@@ -61,7 +61,7 @@ public:
     bool isProtein() const;
     void setIsProtein(bool isProtein);
     void calculateHBondEnergies(QList<Residue *> inResidues);
-    void calculateSurfaces(int from, int to, QString chain);
+    void calculateSurfaces(int from, QString startChain, int to, QString endChain);
     void calculateSurfaces();
     void addChain(Chain *newChain);
 
