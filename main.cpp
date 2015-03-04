@@ -5,7 +5,7 @@
 
 #include "pdbparser.h"
 #include "calculator.h"
-#include "chartbuilders.h"
+//#include "chartbuilders.h"
 
 using namespace std;
 
@@ -67,14 +67,14 @@ int main(int argc, char *argv[])
     cout  << "Parsing done!\n";
     writeHeader();
     Calculator *cal;
-    ChartBuilder *chartBuilder;
+    //ChartBuilder *chartBuilder;
     QList<int> chartData;
     QStringList labels;
 
 
     for(int i=0;i<fragments.count();i++)
     {
-        chartBuilder = new ChartBuilder();
+      //  chartBuilder = new ChartBuilder();
         cout  << "Calculating " << fragments[i].name.toStdString() << " ... \n";
         cout << fragments[i].endPoints.count() << " end point to calculate.\n";
         stream << fragments[i].name << ": \r\n";
@@ -93,9 +93,9 @@ int main(int argc, char *argv[])
             QString temp =fragments[i].endPoints[j].chainName + " " + QString::number(fragments[i].endPoints[j].endResidue);
             labels.append(temp);
         }
-        chartBuilder->setLabels(labels);
-        chartBuilder->setHorzontalLabel("ACC");
-        chartBuilder->setVerticalLabel("End Points");
+//        chartBuilder->setLabels(labels);
+//        chartBuilder->setHorzontalLabel("ACC");
+//        chartBuilder->setVerticalLabel("End Points");
         for(int k=0;k<groups.count();k++)
         {
             chartData.clear();
@@ -104,15 +104,15 @@ int main(int argc, char *argv[])
             {
                 chartData.append( fragments[i].resaults[j][k]);
             }
-            chartBuilder->addData(groups[k].name, chartData);
+//            chartBuilder->addData(groups[k].name, chartData);
         }
-        if(jpegFilesDir!=""){
-            if(jpegFilesDir.at(jpegFilesDir.length()-1) != '/')
-                    jpegFilesDir += "/";
-            chartBuilder->saveImage(jpegFilesDir + fragments[i].name +".png");
-        }
-        else
-            chartBuilder->saveImage( fragments[i].name +".png");
+//        if(jpegFilesDir!=""){
+//            if(jpegFilesDir.at(jpegFilesDir.length()-1) != '/')
+//                    jpegFilesDir += "/";
+//            chartBuilder->saveImage(jpegFilesDir + fragments[i].name +".png");
+//        }
+//        else
+//            chartBuilder->saveImage( fragments[i].name +".png");
         delete cal;
 //        delete chartBuilder;
     }
