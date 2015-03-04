@@ -1,5 +1,5 @@
 QT += core
-QT -= widgets
+QT -= widgets gui
 TEMPLATE = app
 TARGET = Fragmenter
 
@@ -13,7 +13,8 @@ HEADERS += \
     atom.h \
     chain.h \
     pdbparser.h \
-    calculator.h
+    calculator.h \
+    vector3d.h
     #chartbuilders.h
 
 SOURCES += \
@@ -23,7 +24,8 @@ SOURCES += \
     main.cpp \
     chain.cpp \
     pdbparser.cpp \
-    calculator.cpp
+    calculator.cpp \
+    vector3d.cpp
     #chartbuilders.cpp
 
 OTHER_FILES += \

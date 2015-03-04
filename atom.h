@@ -2,9 +2,10 @@
 #define ATOM_H
 
 #include <QObject>
-#include <QtGui/QVector3D>
+//#include <QtGui/QVector3D>
 #include <QDebug>
 #include "residue.h"
+#include "vector3d.h"
 class Bond;
 class Residue;
 class Atom
@@ -12,8 +13,8 @@ class Atom
 public:
     explicit Atom(int serial,QString name, qreal x,qreal y,qreal z);
     Atom(Atom* atom);
-    QVector3D center(){return m_pos;}
-    void setPos(QVector3D pos){m_pos = pos;}
+    Vector3D &center(){return m_pos;}
+    void setPos(Vector3D pos){m_pos = pos;}
     void setPos(qreal x,qreal y,qreal z)
     {m_pos.setX(x); m_pos.setY(y); m_pos.setZ(z);}
 
@@ -24,7 +25,7 @@ public:
     qreal x(){return m_pos.x();}
     qreal y(){return m_pos.y();}
     qreal z(){return m_pos.z();}
-    QColor color(){return atomColor;}
+    //QColor color(){return atomColor;}
     qreal radius(){return m_radius;}
 
     void setAminoAcid(Residue *aminoAcid)
@@ -40,19 +41,19 @@ public:
     QString chain() const;
     void setChain(const QString &chain);
 
-    QVector3D operator=(Atom *);
+    Vector3D operator=(Atom *);
     bool isInBackbone();
 protected:
     void makeAtomFeatures();
     QString parseCarbonType(QString fileType);
     //    QList<Bond *>bonds;
 private:
-    QVector3D m_pos;
+    Vector3D m_pos;
     int m_serial;
     QString m_name;
     QString m_completeName;
     QString m_type;
-    QColor atomColor;
+    //QColor atomColor;
     qreal m_radius;
     Residue *m_residue;
     QList<Bond *>* m_bonds;

@@ -2,11 +2,12 @@
 #define AMINOACID_H
 
 #include <QObject>
-#include <QtGui/QColor>
-#include <QtGui/QVector3D>
+//#include <QtGui/QColor>
+//#include <QtGui/QVector3D>
 #include <qmath.h>
 #include "chain.h"
 #include "atom.h"
+#include "vector3d.h"
 
 const double
     kRadiusN = 1.65,
@@ -44,7 +45,7 @@ public:
     QString name(){return m_name;}
     QString completeName(){return m_compeleteName;}
     int serial(){return m_serial;}
-    QColor color(){return m_color;}
+    //QColor color(){return m_color;}
     bool selected() const;
     void setSelected(bool selected);
     void addAtom(Atom *atom);
@@ -68,7 +69,7 @@ public:
     Atom *getC(){return m_C;}
     Atom *getH(){return m_H;}
 
-    QVector3D getCenter(){return m_Center;}
+    Vector3D getCenter(){return m_Center;}
     qreal getRadius(){return m_Radius;}
     qreal accessibility() const;
 
@@ -93,11 +94,11 @@ private:
     QString m_compeleteName;
     char chirality;
     int m_serial;
-    QColor m_color;
+//    QColor m_color;
     bool m_selected;
     QList<Atom *> m_atoms;
-    QVector3D m_Box[2];
-    QVector3D m_Center;
+    Vector3D m_Box[2];
+    Vector3D m_Center;
     qreal m_Radius;
     qreal m_accessibility;
     bool m_isAminoAcid;
@@ -125,7 +126,7 @@ class Accumulator
 
     struct candidate
     {
-        QVector3D	location;
+        Vector3D	location;
         double	radius;
         double	distance;
 
@@ -133,7 +134,7 @@ class Accumulator
                 { return distance < rhs.distance; }
     };
 
-    void operator()(const QVector3D& a, const QVector3D& b, qreal d, qreal r)
+    void operator()( Vector3D& a,  Vector3D& b, qreal d, qreal r)
     {
         double distance = pow(a.distanceToPoint(b), 2);
         d += kRadiusWater;
@@ -168,13 +169,13 @@ class MSurfaceDots
     static MSurfaceDots&	Instance();
 
     quint32					size() const					{ return mPoints.size(); }
-    const QVector3D&		operator[](quint32 inIx) const	{ return mPoints[inIx]; }
+    const Vector3D&		operator[](quint32 inIx) const	{ return mPoints[inIx]; }
     qreal					weight() const					{ return mWeight; }
 
   private:
                             MSurfaceDots(qint32 inN);
 
-    vector<QVector3D>		mPoints;
+    vector<Vector3D>		mPoints;
     qreal					mWeight;
 };
 

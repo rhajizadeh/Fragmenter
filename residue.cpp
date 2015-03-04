@@ -2,39 +2,39 @@
 #include <qmath.h>
 #include <limits>
 #include <QDebug>
-double CosinusAngle(const QVector3D p1, const QVector3D p2, const QVector3D p3, const QVector3D p4)
+double CosinusAngle(const Vector3D p1, const Vector3D p2, const Vector3D p3, const Vector3D p4)
 {
-    QVector3D v12 = p1 - p2;
-    QVector3D v34 = p3 - p4;
+    Vector3D v12 = p1 - p2;
+    Vector3D v34 = p3 - p4;
 
     double result = 0;
 
-    double x = QVector3D::dotProduct(v12, v12) * QVector3D::dotProduct(v34, v34);
+    double x = Vector3D::dotProduct(v12, v12) * Vector3D::dotProduct(v34, v34);
     if (x > 0)
-        result = QVector3D::dotProduct(v12, v34) / sqrt(x);
+        result = Vector3D::dotProduct(v12, v34) / sqrt(x);
 
     return result;
 }
 
-double DihedralAngle(const QVector3D p1, const QVector3D p2, const QVector3D p3, const QVector3D p4)
+double DihedralAngle(const Vector3D p1, const Vector3D p2, const Vector3D p3, const Vector3D p4)
 {
-    QVector3D v12 = p1 - p2;	// vector from p2 to p1
-    QVector3D v43 = p4 - p3;	// vector from p3 to p4
+    Vector3D v12 = p1 - p2;	// vector from p2 to p1
+    Vector3D v43 = p4 - p3;	// vector from p3 to p4
 
-    QVector3D z = p2 - p3;		// vector from p3 to p2
+    Vector3D z = p2 - p3;		// vector from p3 to p2
 
-    QVector3D p = QVector3D::crossProduct(z, v12);
-    QVector3D x = QVector3D::crossProduct(z, v43);
-    QVector3D y = QVector3D::crossProduct(z, x);
+    Vector3D p = Vector3D::crossProduct(z, v12);
+    Vector3D x = Vector3D::crossProduct(z, v43);
+    Vector3D y = Vector3D::crossProduct(z, x);
 
-    double u = QVector3D::dotProduct(x, x);
-    double v = QVector3D::dotProduct(y, y);
+    double u = Vector3D::dotProduct(x, x);
+    double v = Vector3D::dotProduct(y, y);
 
     double result = 360;
     if (u > 0 && v > 0)
     {
-        u = QVector3D::dotProduct(p, x) / sqrt(u);
-        v = QVector3D::dotProduct(p, y) / sqrt(v);
+        u = Vector3D::dotProduct(p, x) / sqrt(u);
+        v = Vector3D::dotProduct(p, y) / sqrt(v);
         if (u != 0 || v != 0)
             result = atan2(v, u) * 180 / M_PI;
     }
@@ -137,112 +137,112 @@ void Residue::createFeatures()
     if(m_name == "ALA" )
     {
         m_compeleteName = "Alanine";
-        m_color.setNamedColor("lightgreen");
+//        m_color.setNamedColor("lightgreen");
     }
     else if(m_name == "ARG" )
     {
         m_compeleteName = "Arginine";
-        m_color.setNamedColor("blue");
+//        m_color.setNamedColor("blue");
     }
     else if(m_name == "ASN")
     {
         m_compeleteName = "Asparagine";
-        m_color.setNamedColor("darkgreen");
+//        m_color.setNamedColor("darkgreen");
     }
     else if(m_name == "ASP")
     {
         m_compeleteName = "Aspartic acid";
-        m_color.setNamedColor("darkgreen");
+//        m_color.setNamedColor("darkgreen");
     }
     else if(m_name == "ASX"  )
     {
         m_compeleteName = "Asparagine or Aspartic acid";
-        m_color.setNamedColor("gray");
+//        m_color.setNamedColor("gray");
     }
     else if(m_name == "CYS"  )
     {
         m_compeleteName = "Cysteine";
-        m_color.setNamedColor("green");
+//        m_color.setNamedColor("green");
     }
     else if(m_name == "GLN")
     {
         m_compeleteName = "Glutamine";
-        m_color.setNamedColor("darkgreen");
+//        m_color.setNamedColor("darkgreen");
     }
     else if(m_name == "GLU" )
     {
         m_compeleteName = "Glutamic acid";
-        m_color.setNamedColor("drakgreen");
+//        m_color.setNamedColor("drakgreen");
     }
     else if(m_name == "GLX" )
     {
         m_compeleteName = "Glutamine or Glutamic acid";
-        m_color.setNamedColor("lightgray");
+//        m_color.setNamedColor("lightgray");
     }
     else if(m_name == "GLY" )
     {
         m_compeleteName = "Glycine";
-        m_color.setNamedColor("lightgreen");
+//        m_color.setNamedColor("lightgreen");
     }
     else if(m_name == "HIS" )
     {
         m_compeleteName = "Histidine";
-        m_color.setNamedColor("darkblue");
+//        m_color.setNamedColor("darkblue");
     }
     else if(m_name == "ILE" )
     {
         m_compeleteName = "Isoleucine";
-        m_color.setNamedColor("blue");
+//        m_color.setNamedColor("blue");
     }
     else if(m_name == "LEU")
     {
         m_compeleteName = "Leucine";
-        m_color.setNamedColor("blue");
+//        m_color.setNamedColor("blue");
     }
     else if(m_name == "LYS" )
     {
         m_compeleteName = "Lysine";
-        m_color.setNamedColor("range");
+//        m_color.setNamedColor("range");
     }
     else if(m_name == "MET")
     {
         m_compeleteName = "Methionine";
-        m_color.setNamedColor("blue");
+//        m_color.setNamedColor("blue");
     }
     else if(m_name == "PHE" )
     {
         m_compeleteName = "Phenylalanine";
-        m_color.setNamedColor("lilac");
+//        m_color.setNamedColor("lilac");
     }
     else if(m_name == "PRO")
     {
         m_compeleteName = "Proline";
-        m_color.setNamedColor("pink");
+//        m_color.setNamedColor("pink");
     }
     else if(m_name == "SER" )
     {
         m_compeleteName = "Serine";
-        m_color.setNamedColor("red");
+//        m_color.setNamedColor("red");
     }
     else if(m_name == "THR")
     {
         m_compeleteName = "Threonine";
-        m_color.setNamedColor("red");
+//        m_color.setNamedColor("red");
     }
     else if(m_name == "TRP" )
     {
         m_compeleteName = "Tryptophan";
-        m_color.setNamedColor("lilac");
+//        m_color.setNamedColor("lilac");
     }
     else if(m_name == "TYR")
     {
         m_compeleteName = "Tyrosine";
-        m_color.setNamedColor("lilac");
+//        m_color.setNamedColor("lilac");
     }
     else if(m_name == "VAL")
     {
         m_compeleteName = "Valine";
-        m_color.setNamedColor("blue");
+//        m_color.setNamedColor("blue");
     }
     else if(m_name == "A")
     {
@@ -252,12 +252,12 @@ void Residue::createFeatures()
     else if(m_name == "C")
     {
         m_compeleteName = "Cytidine";
-        m_isAminoAcid = false;
+//        m_isAminoAcid = false;
     }
     else if(m_name == "G")
     {
         m_compeleteName = "Guanosine";
-        m_isAminoAcid = false;
+//        m_isAminoAcid = false;
     }
     else if(m_name == "I")
     {
@@ -284,7 +284,7 @@ void Residue::createFeatures()
         m_compeleteName = m_name;
         m_isAminoAcid = false;
     }
-    m_color.setRgb(qrand()%255,qrand()%255,qrand()%255);
+//    m_color.setRgb(qrand()%255,qrand()%255,qrand()%255);
 }
 
 void Residue::calculateSurface(QList<Residue*> inResidues)
@@ -456,7 +456,7 @@ qreal Residue::calculateSurface(Atom *inAtom, double inRadius, QList<Residue *> 
 
     for (quint32 i = 0; i < surfaceDots.size(); i++)
     {
-        QVector3D xx = surfaceDots[i] * radius;
+        Vector3D xx = surfaceDots[i] * radius;
 
         bool free = true;
         for (quint32 k = 0; free && k < accumulate.m_x.size(); k++)
@@ -703,7 +703,7 @@ MSurfaceDots::MSurfaceDots(qint32 N)
         double lat = asin((2.0 * i) / P);
         double lon = fmod(i, kGoldenRatio)* 2 * M_PI / kGoldenRatio;
 
-        QVector3D p;
+        Vector3D p;
         p.setX(sin(lon) * cos(lat));
         p.setY(cos(lon) * cos(lat));
         p.setZ(sin(lat));

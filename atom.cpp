@@ -29,7 +29,7 @@ void Atom::makeAtomFeatures()
     {
         m_completeName = "Sulfur";
         m_type = m_name.mid(1);
-        atomColor.setNamedColor("yellow");
+        //atomColor.setNamedColor("yellow");
 
         m_radius = 100.0/25.0;
     }
@@ -37,7 +37,7 @@ void Atom::makeAtomFeatures()
     {
         m_completeName = "Phosphor";
         m_type = m_name.mid(1);
-        atomColor.setNamedColor("orange");
+//        atomColor.setNamedColor("orange");
         m_radius = 100.0/25.0;
     }
 
@@ -45,56 +45,56 @@ void Atom::makeAtomFeatures()
     {
         m_completeName = "Chlorine";
         m_type = "";
-        atomColor.setNamedColor("green");
+//        atomColor.setNamedColor("green");
         m_radius = 100.0/25.0;
     }
     else if(m_name=="B")
     {
         m_completeName = "Boron";
         m_type = "";
-        atomColor.setNamedColor("brown");
+//        atomColor.setNamedColor("brown");
         m_radius = 85.0/25.0;
     }
     else if(m_name=="NA")
     {
         m_completeName = "Sodium";
         m_type = "";
-        atomColor.setNamedColor("lightblue");
+//        atomColor.setNamedColor("lightblue");
         m_radius = 180.0/25.0;
     }
     else if(m_name=="FE")
     {
         m_completeName = "Iron";
         m_type = "";
-        atomColor.setNamedColor("orange");
+//        atomColor.setNamedColor("orange");
         m_radius = 140.0/25.0;
     }
     else if(m_name.at(0)=='N')
     {
         m_completeName = "Nitrogen";
         m_type = m_name.mid(1);
-        atomColor.setNamedColor("blue");
+//        atomColor.setNamedColor("blue");
         m_radius = 65.0/25.0;
     }
     else if(m_name.at(0)=='O')
     {
         m_completeName = "Oxygen";
         m_type = m_name.mid(1);
-        atomColor.setNamedColor("red");
+//        atomColor.setNamedColor("red");
         m_radius = 60.0/25.0;
     }
     else if(m_name.at(0)=='C')
     {
         m_completeName = "Carbon";
         m_type = parseCarbonType(m_name.mid(1));
-        atomColor.setNamedColor("gray");
+//        atomColor.setNamedColor("gray");
         m_radius = 70.0/25.0;
     }
     else if(m_name.at(0)=='H')
     {
         m_completeName = "Hydrogen";
         m_type = m_name.mid(1);
-        atomColor.setNamedColor("white");
+//        atomColor.setNamedColor("white");
         m_radius = 25.0/25.0;
     }
     else
@@ -103,7 +103,7 @@ void Atom::makeAtomFeatures()
 
         m_completeName = m_name;
         m_type = "";
-        atomColor.setRgb(255,20,147);
+//        atomColor.setRgb(255,20,147);
         m_radius = 1;
     }
 
@@ -123,7 +123,7 @@ QString Atom::parseCarbonType(QString fileType)
     return fileType;
 }
 
-QVector3D Atom::operator=(Atom *atom)
+Vector3D Atom::operator=(Atom *atom)
 {
     return atom->m_pos;
 }
