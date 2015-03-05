@@ -309,7 +309,8 @@ void openFile()
 
     outfile = new QFile(outPut);
     outfile->remove();
-    outfile->open(QFile::ReadWrite);
+    if(!outfile->open(QFile::WriteOnly))
+        qDebug() << "Error opening output file";
     stream.setDevice(outfile);
 }
 

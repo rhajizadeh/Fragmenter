@@ -147,7 +147,7 @@ void Calculator::writeToFile(EndPoint endPoint, QList<double> counts)
 
 void CalculatorRunnable::run()
 {
-
+//echo
     m_model->calculateSurfaces(m_startPoint.endResidue-m_model->getStartRes(), m_startPoint.chainName,
                                m_endPoint.endResidue-m_model->getStartRes(), m_endPoint.chainName);
     error = !countGroups(m_endPoint);
