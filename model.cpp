@@ -178,14 +178,15 @@ void Model::calculateSurfaces(int from, QString startChain , int to, QString end
     QList<Residue*> residues = getResidues();
     QList<Residue*> residues2;
     QList<Residue*>::Iterator it1;
-    int i=1;
+    int i=1, counter = 0;
     bool endCheck=false;
 
     bool startChainCheck = startChain=="";
     bool endChainCheck = endChain=="";
 
-    for(it1=residues.begin(); it1<residues.end(); it1++)
+    for(it1=residues.begin(); it1<residues.end(); it1++, counter++)
     {
+
         (*it1)->resetAccessibility();
 
         if(endChain == (*it1)->parentChain()->id())
@@ -194,7 +195,7 @@ void Model::calculateSurfaces(int from, QString startChain , int to, QString end
         if(startChain == (*it1)->parentChain()->id())
             startChainCheck = true;
 
-        if((endCheck && endChainCheck) || !(i>=from && startChainCheck))
+        if((endCheck && endChainCheck) || !(counter>=from && startChainCheck))
             continue;
         if((*it1)->isAminoAcid())
             residues2.append(*it1);

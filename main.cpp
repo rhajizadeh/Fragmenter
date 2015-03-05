@@ -2,6 +2,7 @@
 
 #include <QCoreApplication>
 #include <iostream>
+#include <new>
 
 #include "pdbparser.h"
 #include "calculator.h"
