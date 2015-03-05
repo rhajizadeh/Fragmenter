@@ -25,7 +25,7 @@ void Calculator::run()
     //freeModelsLock.release(2*idealThreadCount());
   //  qDebug() << freeModelsLock.available();
     writeTableHeader();
-    for(int i=0;i<2*idealThreadCount() && i==0;i++)
+    for(int i=0;i<2*idealThreadCount();i++)
     {
         Model *model = new Model(m_model);
         freeModels.append(model);
