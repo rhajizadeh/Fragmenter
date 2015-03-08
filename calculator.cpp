@@ -21,10 +21,10 @@ void Calculator::run()
     QThreadPool *pool = QThreadPool::globalInstance();
     QList<CalculatorRunnable *> threads;
     CalculatorRunnable *cal = 0;
-    countGroups();
+
     //freeModelsLock.release(2*idealThreadCount());
   //  qDebug() << freeModelsLock.available();
-    writeTableHeader();
+
     for(int i=0;i<2*idealThreadCount();i++)
     {
         Model *model = new Model(m_model);
@@ -56,6 +56,8 @@ void Calculator::run()
 
     }
     pool->waitForDone();
+    countGroups();
+    writeTableHeader();
     qSort(resaultList.begin(),resaultList.end());
 
     for(int i=0;i<resaultList.count();i++)
@@ -70,38 +72,25 @@ void Calculator::run()
 
 void Calculator::countGroups()
 {
-    QString toWrite="";
+    QString toWrite="In your selection there was:\r\n";
 
-
-    for(int i=0;i<m_model->chains().count();i++)
+//    qDebug() << Model::toCountNames;
+    for(int j=0;j<m_groups.count();j++)
     {
-        Chain *chain = m_model->chains()[i];
-        toWrite += "In chain " + chain->id() + ":\n";
-        for(int k=0;k<m_groups.count();k++)
-        {
+        int count = 0;
+        for(int i=0;i<Model::toCountNames.count();i++){
 
-            int count = 0;
-            for(int j=0;j<chain->residues().count();j++)
+            if(m_groups[j].AminoAcids.contains(Model::toCountNames[i]))
             {
-                bool found = false;
-                QString name = chain->residues()[j]->name();
-                for(int q=0;q<m_groups[k].AminoAcids.count();q++)
-                {
-                    if(m_groups[k].AminoAcids[q] == name)
-                    {
-                        count ++;
-                        found = true;
-                        break;
-
-                    }
-                }
-             //   qDebug() << j+9 << chain->residues()[j]->serial() <<  name <<chain->id() ;
+                count ++;
+//                break;
             }
-              toWrite += m_groups[k].name + ": " + QString::number(count) + "\r\n";
         }
-        toWrite += "-----------------\r\n";
+        toWrite += m_groups[j].name + ": " + QString::number(count) +
+                + " " + QString::number(count*100.0/Model::toCountNames.count(),'g', 4)+ "%\r\n";
     }
 
+    toWrite += "-----------------\r\n";
      m_stream << toWrite;
 }
 

@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
       //  chartBuilder = new ChartBuilder();
         cout  << "Calculating " << fragments[i].name.toStdString() << " ... \n";
         cout << fragments[i].endPoints.count() << " end point to calculate.\n";
-        stream << fragments[i].name << ": \r\n";
+       // stream << fragments[i].name << ": \r\n";
 
         stream.flush();
         cal = new Calculator(fragments[i].endPoints,groups,parser->models()[0],&stream,mode);
@@ -319,7 +319,7 @@ void writeHeader()
 {
     // outfile->open(QFile::Append);
     QString toWrite="";
-    toWrite = "=== Accsessible Area Calculation by Roozbeh Hajizadeh ======\r\n";
+    toWrite = "=== Surface ARea Analysis Tool (SARA) ======\r\n";
     lineLength=toWrite.count();
     for(int i=0;i<groups.count();i++)
     {

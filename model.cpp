@@ -1,6 +1,9 @@
 #include "model.h"
 
 #include <QThread>
+
+QList<QString> Model::toCountNames;
+
 Model::Model(Model *model)
 {
     m_number = model->m_number;
@@ -203,7 +206,13 @@ void Model::calculateSurfaces(int from, QString startChain , int to, QString end
 
         i++;
     }
+    //if(residues2.count() > toCountNames.count()){
+        toCountNames.clear();
+        foreach (Residue *r, residues2) {
+            toCountNames.append(r->name());
+        }
 
+//    }
     for(it1=residues2.begin(); it1<residues2.end(); it1++)
     {
         (*it1)->calculateSurface(residues2);

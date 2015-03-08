@@ -16,6 +16,7 @@ class Model
 {
 
 public:
+    static QList<QString> toCountNames;
     Model(int number)
     {
         m_number = number;
