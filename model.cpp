@@ -2,7 +2,7 @@
 
 #include <QThread>
 
-QList<QString> Model::toCountNames;
+
 
 Model::Model(Model *model)
 {

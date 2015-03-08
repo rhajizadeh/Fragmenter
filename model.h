@@ -16,7 +16,7 @@ class Model
 {
 
 public:
-    static QList<QString> toCountNames;
+
     Model(int number)
     {
         m_number = number;
@@ -67,11 +67,12 @@ public:
     void addChain(Chain *newChain);
 
     Chain *findChainById(QString id);
-
+    QList<QString> getToCount(){ return toCountNames; }
     //void calculateHBondEnergies(QList<Residue *> inResidues);
 protected:
     void updateRange(qreal x, qreal y, qreal z);
 private:
+    QList<QString> toCountNames;
     QList<Atom *> atoms;
     QList<Bond *> bonds;
 //    QList<Residue *>m_residues;

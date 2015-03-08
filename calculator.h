@@ -96,7 +96,7 @@ public:
     static void resetProgress(){progress = 0;}
     void appendToResaults(ThreadResault resault);
     void thrStarted();
-    void thrEnded(Model *model);
+    void thrEnded(QList<QString> toCountList, Model *model);
 protected:
     void run();
     void countGroups();
@@ -120,7 +120,7 @@ private:
     QMutex mutex;
     static QMutex mutex2;
     QList<ThreadResault> resaultList;
-
+    QList<QString> finalToCount;
 signals:
     
 public slots:

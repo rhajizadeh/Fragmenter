@@ -78,16 +78,16 @@ void Calculator::countGroups()
     for(int j=0;j<m_groups.count();j++)
     {
         int count = 0;
-        for(int i=0;i<Model::toCountNames.count();i++){
+        for(int i=0;i<finalToCount.count();i++){
 
-            if(m_groups[j].AminoAcids.contains(Model::toCountNames[i]))
+            if(m_groups[j].AminoAcids.contains(finalToCount[i]))
             {
                 count ++;
 //                break;
             }
         }
         toWrite += m_groups[j].name + ": " + QString::number(count) +
-                + " " + QString::number(count*100.0/Model::toCountNames.count(),'g', 4)+ "%\r\n";
+                + " " + QString::number(count*100.0/finalToCount.count(),'g', 4)+ "%\r\n";
     }
 
     toWrite += "-----------------\r\n";
@@ -142,7 +142,7 @@ void CalculatorRunnable::run()
     error = !countGroups(m_endPoint);
 
     Calculator::showProgress(total);
-    m_calculator->thrEnded(m_model);
+    m_calculator->thrEnded(m_model->getToCount(), m_model);
 }
 
 void Calculator::thrStarted()
@@ -150,11 +150,16 @@ void Calculator::thrStarted()
     workingThread++;
 }
 
-void Calculator::thrEnded(Model *model)
+void Calculator::thrEnded(QList<QString> toCountList, Model *model)
 {
     workingThread--;
     freeModelsMutex.lock();
     freeModels.append(model);
+    if(finalToCount.count() < toCountList.count())
+    {
+        finalToCount.clear();
+        finalToCount.append(toCountList);
+    }
     freeModelsMutex.unlock();
 }
 

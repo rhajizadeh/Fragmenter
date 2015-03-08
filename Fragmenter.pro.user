@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 3.3.1, 2015-03-08T22:14:11. -->
+<!-- Written by QtCreator 3.3.1, 2015-03-08T22:55:58. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -243,7 +243,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Fragmenter</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Volumes/SP PHD U3/Programming/projects/qt/Fragmenter/Fragmenter.pro</value>
-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments">-i /var/www/html/Fragmenter/files/329232/2M4I.pdb -c  /var/www/html/Fragmenter/files/329232/config.txt -o /var/www/html/Fragmenter/files/329232/My_file -j /var/www/html/Fragmenter/files/329232/</value>
+    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments">-i /var/www/html/Fragmenter/files/229993/2VPF_AB.pdb -c  /var/www/html/Fragmenter/files/229993/config.txt -o /var/www/html/Fragmenter/files/229993/My_file -j /var/www/html/Fragmenter/files/229993/</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">Fragmenter.pro</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix">false</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseTerminal">false</value>
