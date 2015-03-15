@@ -17,6 +17,7 @@ struct Group
 {
     QString name;
     QStringList AminoAcids;
+    double naturePercantage;
 };
 
 struct EndPoint{
@@ -89,7 +90,7 @@ class Calculator : public QThread
     Q_OBJECT
 public:
     explicit Calculator(QList<EndPoint> endPoints, QList<Group> groups, Model* model,  QTextStream *stream,Modes mode, QObject *parent = 0);
-    QList<QList<double> > resaults()
+    QList<QList<double> > results()
     { return m_resaults; }
     QList<EndPoint> getFinalEndPoints();
     static void showProgress(int total);

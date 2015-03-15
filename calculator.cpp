@@ -16,7 +16,7 @@ Calculator::Calculator(QList<EndPoint> endPoints, QList<Group> groups, Model *mo
 void Calculator::run()
 {
     resetProgress();
-    resaults().clear();
+    results().clear();
     iteration = 0;
     QThreadPool *pool = QThreadPool::globalInstance();
     QList<CalculatorRunnable *> threads;
@@ -87,7 +87,8 @@ void Calculator::countGroups()
             }
         }
         toWrite += m_groups[j].name + ": " + QString::number(count) +
-                + " " + QString::number(count*100.0/finalToCount.count(),'g', 4)+ "%\r\n";
+                + " " + QString::number(count*100.0/finalToCount.count(),'g', 4)+ "% "
+                + QString::number(m_groups[j].naturePercantage*100.0, 'g', 4)+ "%\r\n";
     }
 
     toWrite += "-----------------\r\n";

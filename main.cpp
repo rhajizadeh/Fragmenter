@@ -38,7 +38,7 @@ void openFile();
 void writeHeader();
 inline void writeLine();
 void writeTableHeader();
-
+QHash<QString,  double> getNaturePercs();
 int main(int argc, char *argv[])
 {
     QCoreApplication app(argc,argv);
@@ -85,7 +85,7 @@ int main(int argc, char *argv[])
         cal->start();
         cal->wait();
         fragments[i].endPoints = cal->getFinalEndPoints();
-        fragments[i].resaults = cal->resaults();
+        fragments[i].resaults = cal->results();
         writeLine();
         stream.flush();
         labels.clear();
@@ -197,6 +197,7 @@ bool parseArguments(int argc,char *argv[],QString &message)
 
 bool parseConfigfile(QString &message)
 {
+    QHash<QString, double> percs = getNaturePercs();
     QFile file(confFile);
     if(!file.open(QFile::ReadOnly))
     {
@@ -299,6 +300,10 @@ bool parseConfigfile(QString &message)
         else
         {
             Group p = {s, arg.split(' ')};
+            double count = 0;
+            for(int i=0;i<p.AminoAcids.count();i++)
+                count += percs[p.AminoAcids[i]];
+            p.naturePercantage = count;
             groups.append(p);
         }
     }
@@ -343,5 +348,30 @@ inline void writeLine()
         toWrite += "-";
     toWrite += "\r\n";
     stream << toWrite;
+}
+
+QHash<QString,  double> getNaturePercs(){
+    QHash<QString,  double> percs;// = new QHash<QString, double>();
+    percs.insert("ALA",	0.074);
+    percs.insert("ARG",	0.042);
+    percs.insert("ASN",	0.044);
+    percs.insert("ASP",	0.059);
+    percs.insert("CYS",	0.033);
+    percs.insert("GLU",	0.058);
+    percs.insert("GLN",	0.037);
+    percs.insert("GLY",	0.074);
+    percs.insert("HIS",	0.029);
+    percs.insert("ILE",	0.038);
+    percs.insert("LEU",	0.076);
+    percs.insert("LYS",	0.072);
+    percs.insert("MET",	0.018);
+    percs.insert("PHE",	0.04);
+    percs.insert("PRO",	0.05);
+    percs.insert("SER",	0.081);
+    percs.insert("THR",	0.062);
+    percs.insert("TRP",	0.013);
+    percs.insert("TYR",	0.033);
+    percs.insert("VAL",	0.068);
+    return percs;
 }
 
