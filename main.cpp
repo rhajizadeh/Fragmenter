@@ -352,26 +352,26 @@ inline void writeLine()
 
 QHash<QString,  double> getNaturePercs(){
     QHash<QString,  double> percs;// = new QHash<QString, double>();
-    percs.insert("ALA",	0.074);
-    percs.insert("ARG",	0.042);
-    percs.insert("ASN",	0.044);
-    percs.insert("ASP",	0.059);
-    percs.insert("CYS",	0.033);
-    percs.insert("GLU",	0.058);
-    percs.insert("GLN",	0.037);
-    percs.insert("GLY",	0.074);
-    percs.insert("HIS",	0.029);
-    percs.insert("ILE",	0.038);
-    percs.insert("LEU",	0.076);
-    percs.insert("LYS",	0.072);
-    percs.insert("MET",	0.018);
+    percs.insert("ALA",	0.07);
+    percs.insert("ARG",	0.04);
+    percs.insert("ASN",	0.04);
+    percs.insert("ASP",	0.06);
+    percs.insert("CYS",	0.03);
+    percs.insert("GLU",	0.06);
+    percs.insert("GLN",	0.04);
+    percs.insert("GLY",	0.08);
+    percs.insert("HIS",	0.03);
+    percs.insert("ILE",	0.04);
+    percs.insert("LEU",	0.08);
+    percs.insert("LYS",	0.07);
+    percs.insert("MET",	0.02);
     percs.insert("PHE",	0.04);
     percs.insert("PRO",	0.05);
-    percs.insert("SER",	0.081);
-    percs.insert("THR",	0.062);
-    percs.insert("TRP",	0.013);
-    percs.insert("TYR",	0.033);
-    percs.insert("VAL",	0.068);
+    percs.insert("SER",	0.08);
+    percs.insert("THR",	0.06);
+    percs.insert("TRP",	0.01);
+    percs.insert("TYR",	0.03);
+    percs.insert("VAL",	0.07);
     return percs;
 }
 
